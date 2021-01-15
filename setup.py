@@ -12,7 +12,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
     ],
-    python_requires = '>=3.0'
+    python_requires = '>=3.6'
 )
 
-system('chmod +x zget.py ; mv zget.py zget ; mv zget /usr/bin/')
+system('chmod +x zget.py ; cp zget.py ./zget ; dos2unix zget ; mv zget /usr/bin/')
