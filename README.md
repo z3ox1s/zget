@@ -6,15 +6,16 @@
 <br><br>
 
 ## ☁️ Download
-    * For a easy download, click in the button Clone or download and click in Download ZIP
-    * If you want to use SSH, you can use `git@github.com:z3ox1s/zget.git`
-    * If you want to use HTTPS, you can use `git clone https://github.com/z3ox1s/zget.git` *(recommended)*
+   - For a easy download, click in the button `Code` and `Clone` or `Download ZIP`
+   - If you want to use SSH, you can use `git@github.com:z3ox1s/zget.git`
+   - If you want to use HTTPS, you can use `git clone https://github.com/z3ox1s/zget.git` *(recommended)*
 
 <br><br>
 
-## ⚙️ Set-up
-  - `python3 setup.py install`
-  - `zget -h`
+## ⚙️ Setup (The auto-installer for now only run in Linux)
+   - **Verify if you have `dos2unix` installed using `dos2unix --version`**
+   -`python3 setup.py install`
+   - `zget -h`
 
 <br><br>
 
