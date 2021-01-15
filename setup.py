@@ -16,5 +16,5 @@ setuptools.setup(
     python_requires = '>=3.6'
 )
 
-if opsystem == 'Linux':
+if opsystem() == 'Linux':
     system('chmod +x zget.py ; cp zget.py ./zget ; dos2unix zget ; mv zget /usr/bin/')
