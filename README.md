@@ -13,9 +13,13 @@
 <br><br>
 
 ## ⚙️ Setup (The auto-installer for now only run in Linux)
-   - **Verify if you have `dos2unix` installed using `dos2unix --version`**
-   - `python3 setup.py install`
-   - `zget -h`
+   - Linux
+      - **Verify if you have `dos2unix` installed using `dos2unix --version`**
+      - `python3 setup.py install`
+      - `zget [OPTIONS]`
+      
+   - Windows
+      - `python3 zget.py [OPTIONS]`
 
 <br><br>
 
