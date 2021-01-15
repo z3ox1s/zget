@@ -24,6 +24,10 @@
 <br><br>
 
 ## 🧾 Todo List
+- [x] Get and Post Method.
+- [x] Custom Headers.
+- [x] Parse Cookies.
+- [x] Parse Data.
 - [ ] Output to a pre-determinated file.
-- [ ] Response Readers return.
+- [ ] Response Headers return.
 - [ ] Add more HTTP Methods.
