@@ -13,7 +13,7 @@ except:
 
 else:
     # Arguments
-    parser = argparse.ArgumentParser(usage = 'zget [OPTIONS]', description = "Ex: zget -t example.com -G -d 'example=example&ex=ex' -H 'Example1: Example1,Example2:Example' -c 'Cookie: EXAMPLE=example'")
+    parser = argparse.ArgumentParser(usage = 'zget [OPTIONS]', description = "Ex: zget -t example.com -G -d 'example1=example1&example2=example2' -H 'Example1: Example1, Example2: Example' -c 'Example1: example1, Example2: example2'")
     parser.add_argument('-t', '--target', help = 'Address of target')
     parser.add_argument('-G', '--get', action = 'store_true', help = 'GET Method,')
     parser.add_argument('-P', '--post', action = 'store_true', help = 'POST Method,')
@@ -93,6 +93,12 @@ else:
 
             for i in range(0, int(len(plh)), 2):
                 payloadH[plh[i]] = plh[i + 1]
+
+        if args.cookies:
+            plc = split(args.cookies, (':', ','))
+
+            for i in range(0, int(len(plc)), 2):
+                payloadC[plc[i]] = plc[i + 1]
 
         if 'user-agent' not in lowerH:
             payloadH['User-Agent'] = 'zget/0.0.1'
