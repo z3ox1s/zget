@@ -19,4 +19,11 @@
 <br><br>
 
 ## ⚠️ Warning
-We are not responsable for any malicious use of this tool. You know what you do.
+- We are not responsable for any malicious use of this tool. You know what you do.
+
+<br><br>
+
+## 🧾 Todo List
+- [ ] Output to a pre-determinated file.
+- [ ] Response Readers return.
+- [ ] Add more HTTP Methods.
