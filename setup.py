@@ -1,5 +1,6 @@
 import setuptools
 from os import system
+from platform import system as opsystem
 
 setuptools.setup(
     name = 'zget-z3ox1s',
@@ -15,4 +16,5 @@ setuptools.setup(
     python_requires = '>=3.6'
 )
 
-system('chmod +x zget.py ; cp zget.py ./zget ; dos2unix zget ; mv zget /usr/bin/')
+if opsystem == 'Linux':
+    system('chmod +x zget.py ; cp zget.py ./zget ; dos2unix zget ; mv zget /usr/bin/')
