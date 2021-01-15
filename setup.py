@@ -8,7 +8,6 @@ setuptools.setup(
     author='z3ox1s',
     description = 'A tool to made HTTP Requests.',
     url = 'https://github.com/z3ox1s/zget',
-    packages = setuptools.find_packages(),
     classifiers = [
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
@@ -17,4 +16,4 @@ setuptools.setup(
 )
 
 if opsystem() == 'Linux':
-    system('chmod +x zget.py ; cp zget.py ./zget ; dos2unix zget ; mv zget /usr/bin/')
+    system('pip3 install -r requirements.txt ; cp zget.py ./zget ; chmod +x zget ; dos2unix zget ; mv zget /usr/bin/')
