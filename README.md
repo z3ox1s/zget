@@ -1,4 +1,4 @@
-<img src = "./screenshot1.png">
+<img src = "./screenshot1.png" width = 750>
 
 ## 🤔 What is zget?
 - zget is a tool to make HTTP Requests.
