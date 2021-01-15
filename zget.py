@@ -124,7 +124,7 @@ else:
                {Fore.BLUE}by{Fore.WHITE} {Fore.RED}z3ox1s{Fore.WHITE}
                 {Fore.BLUE}v0.0.1{Fore.WHITE}''')
 
-        if len(argv) == 0:
+        if len(argv) == 1:
             print(f"\n[{Fore.RED}-{Fore.WHITE}] Usage: zget -t example.com [OPTIONS] {Fore.RED}or{Fore.WHITE} zget -h to see all parameters.")
         
         else:
