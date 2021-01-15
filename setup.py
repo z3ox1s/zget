@@ -1,4 +1,5 @@
 import setuptools
+from os import system
 
 setuptools.setup(
     name = 'zget-z3ox1s',
@@ -13,3 +14,5 @@ setuptools.setup(
     ],
     python_requires = '>=3.0'
 )
+
+system('chmod +x zget.py ; mv zget.py zget ; mv zget /usr/bin/')
