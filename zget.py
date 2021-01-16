@@ -37,6 +37,22 @@ else:
 
     def cmdHelp(): # Help Command
         return '''
+Examples:
+ 
+ GET:
+  zget -t example.com -G (GET Method)
+  zget -t example.com -G -d 'name=value&name=value' (GET + Data)
+  zget -t example.com -G -H 'name:value,name:value' (GET + Headers)
+  zget -t example.com -G -c 'name:value,name:value' (GET + Cookies)
+
+ POST:
+  zget -t example.com -P (POST Method)
+  zget -t example.com -P -d 'name=value&name=value' (POST + Data)
+  zget -t example.com -P -H 'name:value,name:value' (POST + Headers)
+  zget -t example.com -P -c 'name:value,name:value' (POST + Cookies)
+
+Help:
+ 
  -h, --help                         Help command.
  -t URL, --target URL               Address of target.
  -G, --get                          GET Method.
