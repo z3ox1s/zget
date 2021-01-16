@@ -68,7 +68,8 @@ Help:
             txt = txt.replace(sep, default_sep)
         return [i.strip() for i in txt.split(default_sep)]
 
-    def getMethod(target, data = '', payloadH = '', payloadC = ''): # Get method
+    def getMethod(target, payloadF = '', payloadH = '', payloadC = ''): # Get method
+        payloadF = dict()
         payloadH = dict()
         payloadC = dict()
 
@@ -76,6 +77,15 @@ Help:
             lowerH = args.headers.lower()
         else:
             lowerH = ''
+
+        try:
+            plf = split(args.data, ('=', '&'))
+            
+            for i in range(0, int(len(plf)), 2):
+                payloadF[plf[i]] = plf[i + 1]
+
+        except AttributeError:
+            pass
 
         if args.headers:
             plh = split(args.headers, (':', ','))
@@ -92,7 +102,7 @@ Help:
         if 'user-agent' not in lowerH:
             payloadH['User-Agent'] = 'zget/0.0.1'
 
-        response = get(target, data = data, headers = payloadH, cookies = payloadC, allow_redirects = True)
+        response = get(target, data = payloadF, headers = payloadH, cookies = payloadC, allow_redirects = True)
         
         if response.status_code == 404:
             print(f'\n[{Fore.RED}-{Fore.WHITE}] Page {Fore.RED}{target} {Fore.WHITE}seems not exist.')
@@ -134,7 +144,7 @@ Help:
         if 'user-agent' not in lowerH:
             payloadH['User-Agent'] = 'zget/0.0.1'
 
-        response = post(target, data = payloadF, headers = payloadH, allow_redirects = True)
+        response = post(target, data = payloadF, headers = payloadH, cookies = payloadC, allow_redirects = True)
 
         if response.status_code == 404:
             print(f'\n[{Fore.RED}-{Fore.WHITE}] Page {Fore.RED}{target} {Fore.WHITE}seems not exist.')
