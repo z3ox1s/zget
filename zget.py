@@ -13,7 +13,8 @@ except:
 
 else:
     # Arguments
-    parser = argparse.ArgumentParser(usage = 'zget [OPTIONS]', description = "Ex: zget -t example.com -G -d 'example1=example1&example2=example2' -H 'Example1: Example1, Example2: Example' -c 'Example1: example1, Example2: example2'")
+    parser = argparse.ArgumentParser(usage = 'zget [OPTIONS]', add_help = False)
+    parser.add_argument('-h', '--help', action = 'store_true', help = 'Help Commands')
     parser.add_argument('-t', '--target', help = 'Address of target')
     parser.add_argument('-G', '--get', action = 'store_true', help = 'GET Method,')
     parser.add_argument('-P', '--post', action = 'store_true', help = 'POST Method,')
@@ -23,21 +24,31 @@ else:
     args = parser.parse_args()
 
     # Functions
-    def main():
+    def main(): # Main function
         if args.get:
             getMethod(args.target, args.data, args.headers, args.cookies)
 
         elif args.post:
             postMethod(args.target, args.data, args.headers, args.cookies)
 
-    def split(txt, seps):
+    def cmdHelp(): # Help Command
+        return '''
+ -h, --help                         Help command.
+ -t URL, --target URL               Address of target.
+ -G, --get                          GET Method.
+ -P, --post                         POST Method.
+ -d DATA, --data DATA               Data to send to target.
+ -H HEADERS, --headers HEADERS      Custom headers to target.
+ -c COOKIES, --cookies COOKIES      Cookies to send to target.'''
+
+    def split(txt, seps): # Split function
         default_sep = seps[0]
 
         for sep in seps[1:]:
             txt = txt.replace(sep, default_sep)
         return [i.strip() for i in txt.split(default_sep)]
 
-    def getMethod(target, data = '', payloadH = '', payloadC = ''):
+    def getMethod(target, data = '', payloadH = '', payloadC = ''): # Get method
         payloadH = dict()
         payloadC = dict()
 
@@ -69,7 +80,7 @@ else:
         else:
             print('\n' + response.text)
 
-    def postMethod(target, payloadF = '', payloadH = '', payloadC = ''):
+    def postMethod(target, payloadF = '', payloadH = '', payloadC = ''): # Post method
         payloadF = dict()
         payloadH = dict()
         payloadC = dict()
@@ -111,30 +122,34 @@ else:
         else:
             print('\n' + response.text)
 
-    # Main function
+    # Main
     try:
-        if args.target:
-            if '://' not in args.target:
-                args.target = 'http://' + args.target
-
-        print(f'''{Fore.RED}                        
-                             )  
-             (  (     (   ( /(  
-         (   )\))(   ))\  )\()) 
-         )\ ((_))\  /((_)(_))/  
-        ((_) (()(_)(_))  | |_   
-        |_ // _` | / -_) |  _|  
-        /__|\__, | \___|  \__|  
-            |___/{Fore.WHITE}
+        print(f'''                       
+                             {Fore.MAGENTA})  
+             {Fore.MAGENTA}(  (     (   ( /(  
+         {Fore.RED}(   )\))(   ))\  )\()) 
+         {Fore.RED})\ ((_))\  /((_)(_))/  
+        {Fore.RED}((_) (()(_)(_))  | |_   
+        {Fore.YELLOW}|_ // _` | / -_) |  _|  
+        {Fore.YELLOW}/__|\__, | \___|  \__|  
+            {Fore.YELLOW}|___/
                 
-               {Fore.BLUE}by{Fore.WHITE} {Fore.RED}z3ox1s{Fore.WHITE}
-                {Fore.BLUE}v0.0.1{Fore.WHITE}''')
+               {Fore.BLUE}by z3ox1s
+                {Fore.GREEN} 0.0.1{Fore.WHITE}''')
 
-        if len(argv) == 1:
-            print(f"\n[{Fore.RED}-{Fore.WHITE}] Usage: zget -t example.com [OPTIONS] {Fore.RED}or{Fore.WHITE} zget -h to see all parameters.")
+        if args.help:
+            print(cmdHelp())
         
         else:
-            main()
+            if args.target:
+                if '://' not in args.target:
+                    args.target = 'http://' + args.target
+
+            if len(argv) == 1:
+                print(f"\n[{Fore.RED}-{Fore.WHITE}] Usage: zget -t example.com [OPTIONS] {Fore.RED}or{Fore.WHITE} zget -h to see all parameters.")
+            
+            else:
+                main()
 
     # Excepts
     except KeyboardInterrupt:
