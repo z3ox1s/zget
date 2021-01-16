@@ -13,14 +13,14 @@ except:
 
 else:
     # Arguments
-    parser = argparse.ArgumentParser(usage = 'zget [OPTIONS]', add_help = False)
-    parser.add_argument('-h', '--help', action = 'store_true', help = 'Help Commands')
-    parser.add_argument('-t', '--target', help = 'Address of target')
-    parser.add_argument('-G', '--get', action = 'store_true', help = 'GET Method,')
-    parser.add_argument('-P', '--post', action = 'store_true', help = 'POST Method,')
-    parser.add_argument('-d', '--data', help = 'Data to sent to target.')
-    parser.add_argument('-H', '--headers', help = 'Custom headers to target.')
-    parser.add_argument('-c', '--cookies', help = 'Cookies to sent to target.')
+    parser = argparse.ArgumentParser(usage = 'zget -h', add_help = False)
+    parser.add_argument('-h', '--help', action = 'store_true')
+    parser.add_argument('-t', '--target')
+    parser.add_argument('-G', '--get', action = 'store_true')
+    parser.add_argument('-P', '--post', action = 'store_true')
+    parser.add_argument('-d', '--data')
+    parser.add_argument('-H', '--headers')
+    parser.add_argument('-c', '--cookies')
     args = parser.parse_args()
 
     # Functions
