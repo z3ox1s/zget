@@ -25,11 +25,15 @@ else:
 
     # Functions
     def main(): # Main function
-        if args.get:
+        if args.get == False and args.post == False:
             getMethod(args.target, args.data, args.headers, args.cookies)
 
-        elif args.post:
-            postMethod(args.target, args.data, args.headers, args.cookies)
+        else:
+            if args.get:
+                getMethod(args.target, args.data, args.headers, args.cookies)
+
+            elif args.post:
+                postMethod(args.target, args.data, args.headers, args.cookies)
 
     def cmdHelp(): # Help Command
         return '''
