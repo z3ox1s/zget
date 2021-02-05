@@ -246,5 +246,5 @@ Help:
     except SSLCertVerificationError:
         print(f'\n[{Fore.RED}-{Fore.WHITE}] An error has occurred during the SSL Verification.')
 
-    # except:
-    #     print(f"\n[{Fore.RED}-{Fore.WHITE}] Usage: zget -t example.com [OPTIONS] {Fore.RED}or{Fore.WHITE} zget -h to see all parameters.")
+    except:
+        print(f"\n[{Fore.RED}-{Fore.WHITE}] Usage: zget -t example.com [OPTIONS] {Fore.RED}or{Fore.WHITE} zget -h to see all parameters.")
