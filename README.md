@@ -13,8 +13,8 @@
 <br><br>
 
 ## ⚙️ Run
-      - `cd zget`
-      - `python3 zget.py [OPTIONS]`
+   - `cd zget`
+   - `python3 zget.py [OPTIONS]`
 
 <br><br>
 
