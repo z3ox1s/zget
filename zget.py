@@ -49,6 +49,7 @@ Examples:
   zget -t example.com -G -c 'name:value,name:value' (GET + Cookies)
   zget -t example.com -G -U 'value' (GET + User-Agent)
   zget -t example.com -G -RH (GET + Response Headers)
+  zget -t example.com -G -D output (GET + Download)
 
  POST:
   zget -t example.com -P (POST Method)
@@ -57,6 +58,7 @@ Examples:
   zget -t example.com -P -c 'name:value,name:value' (POST + Cookies)
   zget -t example.com -P -U 'value' (POST + User-Agent)
   zget -t example.com -P -RH (POST + Response Headers)
+  zget -t example.com -P -D output (POST + Download)
 
 Help:
  
@@ -68,7 +70,8 @@ Help:
  -H HEADERS, --headers HEADERS      Custom headers to target.
  -c COOKIES, --cookies COOKIES      Cookies to send to target.
  -U, --user-agent USER-AGENT        Custom user-agent send to target.
- -RH, --response-headers            Retrieve response headers from the target.'''
+ -RH, --response-headers            Retrieve response headers from the target.
+ -D, --download OUTPUT              Download file from the target.'''
 
     def split(txt, seps): # Split function
         default_sep = seps[0]
