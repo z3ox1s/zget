@@ -33,7 +33,7 @@
 - [x] Custom Headers.
 - [x] Parse Cookies.
 - [x] Parse Data.
-- [ ] Parse Agent-User
-- [ ] Response Headers return.
+- [x] Parse Agent-User
+- [x] Response Headers return.
+- [x] Add options to download files.
 - [ ] Add more HTTP Methods.
-- [ ] Add options to download files.
