@@ -4,7 +4,7 @@ from platform import system as opsystem
 
 setuptools.setup(
     name = 'zget-z3ox1s',
-    version='0.0.1',
+    version='0.0.2',
     author='z3ox1s',
     description = 'A tool to made HTTP Requests.',
     url = 'https://github.com/z3ox1s/zget',
