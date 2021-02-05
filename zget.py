@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-# Requirements
 try:
     import argparse
-    from requests import get, post, ConnectionError
     from colorama import Fore
     from ssl import SSLCertVerificationError
     from sys import argv
+    from modules.getmethod import getMethod
+    from modules.postmethod import postMethod
 
 except:
     print(f'\n[{Fore.RED}-{Fore.WHITE}] An error has occurred in requirements calling')
@@ -26,19 +26,20 @@ else:
     parser.add_argument('-D', '--download')
     args = parser.parse_args()
 
-    # Functions
-    def main(): # Main function
+    # Main function
+    def main():
         if args.get == False and args.post == False:
-            getMethod(args.target, args.data, args.headers, args.cookies, args.download)
+            getMethod(args.target, args.data, args.headers, args.cookies, args.user_agent, args.response_headers, args.download)
 
         else:
             if args.get:
-                getMethod(args.target, args.data, args.headers, args.cookies, args.download)
+                getMethod(args.target, args.data, args.headers, args.cookies, args.user_agent, args.response_headers, args.download)
 
             elif args.post:
-                postMethod(args.target, args.data, args.headers, args.cookies, args.download)
+                postMethod(args.target, args.data, args.headers, args.cookies, args.user_agent, args.response_headers, args.download)
 
-    def cmdHelp(): # Help Command
+    # Help Command
+    def cmdHelp():
         return '''
 Examples:
  
@@ -72,143 +73,6 @@ Help:
  -U, --user-agent USER-AGENT        Custom user-agent send to target.
  -RH, --response-headers            Retrieve response headers from the target.
  -D, --download OUTPUT              Download file from the target.'''
-
-    def split(txt, seps): # Split function
-        default_sep = seps[0]
-
-        for sep in seps[1:]:
-            txt = txt.replace(sep, default_sep)
-        return [i.strip() for i in txt.split(default_sep)]
-
-    def getMethod(target, payloadF = '', payloadH = '', payloadC = '', filename = ''): # Get method
-        payloadF = dict()
-        payloadH = dict()
-        payloadC = dict()
-
-        if args.headers != None:
-            lowerH = args.headers.lower()
-        else:
-            lowerH = ''
-
-        try:
-            plf = split(args.data, ('=', '&'))
-            
-            for i in range(0, int(len(plf)), 2):
-                payloadF[plf[i]] = plf[i + 1]
-
-        except AttributeError:
-            pass
-
-        if args.headers:
-            plh = split(args.headers, (':', ','))
-
-            for i in range(0, int(len(plh)), 2):
-                payloadH[plh[i]] = plh[i + 1]
-
-        if args.cookies:
-            plc = split(args.cookies, (':', ','))
-
-            for i in range(0, int(len(plc)), 2):
-                payloadC[plc[i]] = plc[i + 1]
-
-        if args.user_agent != '' and 'user-agent' not in lowerH:
-            payloadH['User-Agent'] = args.user_agent
-
-        if args.download:
-            print(f'\n[{Fore.YELLOW}!{Fore.WHITE}] Trying to download the file, please wait...')
-
-            try:
-                resp = get(target)
-
-                with open(filename, 'wb') as f:
-                    f.write(resp.content)
-
-                print(f'\n[{Fore.GREEN}+{Fore.WHITE}] File downloaded successfully.')
-
-            except:
-               print(f'\n[{Fore.RED}-{Fore.WHITE}] An error has occurred during the download.')
-        
-        else:
-            response = get(target, data = payloadF, headers = payloadH, cookies = payloadC, allow_redirects = True)
-            
-            if args.response_headers:
-                if response.status_code == 404:
-                    print(f'\n[{Fore.RED}-{Fore.WHITE}] Page {Fore.RED}{target} {Fore.WHITE}seems not exist.')
-                
-                else:
-                    print(f'\n{Fore.GREEN}Response:{Fore.WHITE}\n', response.text, f'\n{Fore.YELLOW}Headers:{Fore.WHITE}\n', response.headers)
-
-            else:
-                if response.status_code == 404:
-                    print(f'\n[{Fore.RED}-{Fore.WHITE}] Page {Fore.RED}{target} {Fore.WHITE}seems not exist.')
-                
-                else:
-                    print(f'\n{Fore.GREEN}Response:{Fore.WHITE}\n' + response.text)
-
-    def postMethod(target, payloadF = '', payloadH = '', payloadC = '', filename = ''): # Post method
-        payloadF = dict()
-        payloadH = dict()
-        payloadC = dict()
-
-        if args.headers != None:
-            lowerH = args.headers.lower()
-        else:
-            lowerH = ''
-
-        try:
-            plf = split(args.data, ('=', '&'))
-            
-            for i in range(0, int(len(plf)), 2):
-                payloadF[plf[i]] = plf[i + 1]
-
-        except AttributeError:
-            pass
-
-        if args.headers:
-            plh = split(args.headers, (':', ','))
-
-            for i in range(0, int(len(plh)), 2):
-                payloadH[plh[i]] = plh[i + 1]
-
-        if args.cookies:
-            plc = split(args.cookies, (':', ','))
-
-            for i in range(0, int(len(plc)), 2):
-                payloadC[plc[i]] = plc[i + 1]
-
-        if args.user_agent != '' and 'user-agent' not in lowerH:
-            payloadH['User-Agent'] = args.user_agent
-
-        if args.download:
-            print(f'\n[{Fore.YELLOW}!{Fore.WHITE}] Trying to download the file, please wait...')
-
-            try:
-                resp = get(target)
-
-                with open(filename, 'wb') as f:
-                    f.write(resp.content)
-
-                print(f'\n[{Fore.GREEN}+{Fore.WHITE}] File downloaded successfully.')
-
-            except:
-                print(f'\n[{Fore.RED}-{Fore.WHITE}] An error has occurred during the download.')
-        
-        else:
-            response = get(target, data = payloadF, headers = payloadH, cookies = payloadC, allow_redirects = True)
-            
-            if args.response_headers:
-                if response.status_code == 404:
-                    print(f'\n[{Fore.RED}-{Fore.WHITE}] Page {Fore.RED}{target} {Fore.WHITE}seems not exist.')
-                
-                else:
-                    print(f'\n{Fore.GREEN}Response:{Fore.WHITE}\n', response.text, f'\n{Fore.YELLOW}Headers:{Fore.WHITE}\n', response.headers)
-
-            else:
-                if response.status_code == 404:
-                    print(f'\n[{Fore.RED}-{Fore.WHITE}] Page {Fore.RED}{target} {Fore.WHITE}seems not exist.')
-                
-                else:
-                    print(f'\n{Fore.GREEN}Response:{Fore.WHITE}\n' + response.text)
 
     # Main
     try:
