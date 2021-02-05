@@ -34,7 +34,6 @@
 - [x] Parse Cookies.
 - [x] Parse Data.
 - [ ] Parse Agent-User
-- [ ] Output to a pre-determinated file.
 - [ ] Response Headers return.
 - [ ] Add more HTTP Methods.
 - [ ] Add options to download files.
