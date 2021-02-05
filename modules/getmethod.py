@@ -1,5 +1,4 @@
 try:
-    import argparse
     from colorama import Fore
     from requests import get
 
