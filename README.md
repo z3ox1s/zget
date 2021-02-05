@@ -12,12 +12,7 @@
 
 <br><br>
 
-## ⚙️ Setup
-   - Linux
-      - `cd zget`
-      - `./zget.py [OPTIONS]`
-      
-   - Windows
+## ⚙️ Run
       - `cd zget`
       - `python3 zget.py [OPTIONS]`
 
